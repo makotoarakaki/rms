@@ -1,0 +1,109 @@
+CREATE TABLE users (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(50),
+    email VARCHAR(50),
+    send_mail INT(1),
+    role VARCHAR(20),
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+CREATE TABLE posts (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50),
+    body TEXT,
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);	
+
+CREATE TABLE main_item (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    main_item_name VARCHAR(50),
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+CREATE TABLE item (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    main_item_id INT,
+    item_name VARCHAR(50),
+    cost DECIMAL(10,0),
+    unit_price DECIMAL(10,0),
+    tax DECIMAL(10,0),
+    bunrui INT(1),
+    no_cost INT(1) DEFAULT 0,
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+CREATE TABLE supplier (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    business_day DATE DEFAULT NULL,
+    main_item_id INT,
+    main_item_name VARCHAR(50),
+    item_id INT,
+    item_name VARCHAR(50),
+    item_count INT,
+    total DECIMAL(10,0),
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+CREATE TABLE profit (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    business_day DATE DEFAULT NULL,
+    main_item_id INT,
+    main_item_name VARCHAR(50),
+    item_id INT,
+    item_name VARCHAR(50),
+    item_count INT,
+    total DECIMAL(10,0),
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+CREATE TABLE fund (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    fund DECIMAL(10,0),
+    stock DECIMAL(10,0),
+    reserve DECIMAL(10,0),
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+CREATE TABLE staff(
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    hourly_wage DECIMAL(10,0),
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+CREATE TABLE human_costs(
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    staff_id INT(11),
+    business_day DATE DEFAULT NULL,
+    name VARCHAR(50),
+    time DECIMAL(8,2),
+    salary DECIMAL(10,0),
+    designate DECIMAL(10,0),
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+CREATE TABLE spread(
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    main_item_id INT,
+    item_id INT,
+    main_item_name VARCHAR(50),
+    item_name VARCHAR(50),
+    supplier_count INT,
+    supplier_total DECIMAL(10,0),
+    profit_count INT,
+    profit_total DECIMAL(10,0),
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+INSERT INTO `rms`.`main_item` (`id`, `item`, `created`, `modified`) VALUES (NULL, '‚¨Žð', '2012-09-29 00:00:00', 2012-09-29 00:00:00);
